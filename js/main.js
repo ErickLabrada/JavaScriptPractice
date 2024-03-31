@@ -1,13 +1,50 @@
-function sum(n1, n2){
-    return n1+n2;
+function getElementById(id){
+    return document.getElementById(id);
 }
 
-console.log(sum(2,3));
-
-
-function substract(n1,n2){
-    return n1-n2;
+function queryElementsByClass(parent, queryAtribute){
+    let elementsList
+    try {
+        elementsList = parent.querySelectorAll(`.${queryAtribute}`);
+    } catch (error) {
+         console.error(error);
+    } finally{
+        return elementsList;
+    }
 }
 
-console.log(substract(5,2));
-console.log(substract(2,5));
+function queryElementsById(parent, queryAtribute){
+    try {
+        let elementsList = parent.querySelectorAll(`#${queryAtribute}`);
+    } catch (error) {
+         console.error(error);
+    } finally{
+        return elementsList;
+    }
+}
+
+function createElement(parent, type, className, text){
+    let element=document.createElement(type);
+    element.className=className;
+    element.textContent=text;
+    parent.append(element);
+    console.log(element);
+    console.log(element.text);
+}
+
+function changeListBackground(list, color){
+    list.forEach(element => {
+        element.style.backgroundColor=color;
+    });
+}
+
+function DomTest(){
+    const board = getElementById("board");
+    for (let index = 4; index < 10; index++) {
+        createElement(board, "div", "box", index)
+    }
+    const boxes = queryElementsByClass(board, "box");    
+    changeListBackground(boxes, "darkblue")
+}
+
+DomTest();

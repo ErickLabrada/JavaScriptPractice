@@ -4,6 +4,10 @@
     box-sizing: border-box;
 }
 
+.Tittle h2{
+    color:black;
+}
+
 html,
 body{
     width: 100%;
@@ -24,18 +28,25 @@ h1{
     font-size: 250%;
 }
 
-arithmetic{
-    height: 100vh;
-    display:flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center; 
+.Calculator{
+    background-color: gray;
 }
 
-btn{
-    height: 100vh;
-    display:flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+.Tittle{
+    background-color: white;
+    
+}
+.game-board {
+    display: grid;
+    grid-template-rows: 150px 150px 150px;
+    grid-template-columns: 150px 150px 150px;
+}
+
+.box {
+  background: #444;
+  border: 1px solid #555;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #AAA;
 }
