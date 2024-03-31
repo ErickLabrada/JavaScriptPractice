@@ -55,6 +55,8 @@ function eventListenerTest1(){
 
     //Sintax addEventListener("event", function, useCapture);
 
+    //If we set it as true, it'll trigger everything starting from the outter element and work its way inwards
+    //(default is false)
     h2.addEventListener("click", doSomething, false);
     
 
@@ -64,6 +66,42 @@ function doSomething(){
     alert("DOING SOMETHING AAAAAAAA!!!!!!!!!!!!")
 }
 
-domTest();
+function readyStateChange() {
+    document.addEventListener("readystatechange", (event) => {
+        if (event.target.readyState === "complete") {
+            console.log("readyState: Complete")
+            initApp();
+        }
+    });
+}
 
-eventListenerTest1();
+const initApp = () => {
+
+    const view = document.getElementById("view3");
+    const div = view.querySelector("div");
+    const h2 = div.querySelector("h2");
+
+    view.addEventListener("click", (event)=>{
+        event.stopPropagation();
+        view.style.backgroundColor="purple";
+    },false);
+
+    div.addEventListener("click", (event)=>{
+        event.stopPropagation();
+        div.style.backgroundColor="blue";
+    },false);
+
+    h2.addEventListener("click", (event)=>{
+        event.stopPropagation();
+        event.target.textContent="Clicked D:"
+    },false);
+
+
+}
+
+
+//domTest();
+
+//eventListenerTest1();
+
+readyStateChange();
