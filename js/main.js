@@ -38,7 +38,7 @@ function changeListBackground(list, color){
     });
 }
 
-function DomTest(){
+function domTest(){
     const board = getElementById("board");
     for (let index = 4; index < 10; index++) {
         createElement(board, "div", "box", index)
@@ -47,4 +47,23 @@ function DomTest(){
     changeListBackground(boxes, "darkblue")
 }
 
-DomTest();
+function eventListenerTest1(){
+
+    const view = document.getElementById("view3");
+    const div = view.querySelector("div");
+    const h2 = div.querySelector("h2");
+
+    //Sintax addEventListener("event", function, useCapture);
+
+    h2.addEventListener("click", doSomething, false);
+    
+
+}
+
+function doSomething(){
+    alert("DOING SOMETHING AAAAAAAA!!!!!!!!!!!!")
+}
+
+domTest();
+
+eventListenerTest1();
